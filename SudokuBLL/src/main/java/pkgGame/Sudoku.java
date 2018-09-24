@@ -8,7 +8,7 @@ public class Sudoku extends LatinSquare {
 	
 	public Sudoku(int iSize) throws Exception{
 		
-	}
+	} 
 	
 	public int[][] getPuzzle(){
 		return LatinSquare;

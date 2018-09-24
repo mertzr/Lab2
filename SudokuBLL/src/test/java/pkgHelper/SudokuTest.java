@@ -16,7 +16,7 @@ public class SudokuTest {
 		
 		assertTrue(Arrays.equals(expectedArr,s.getRegion(1)));
 		
-	}
+	} 
 	public getRegionTest2() {
 		
 		Sudoku s= new Sudoku(testArr);
