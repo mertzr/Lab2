@@ -71,5 +71,17 @@ public class Sudoku extends LatinSquare {
 		 }
 		 return reg;
 	 }
-
+	
+	public boolean isSudoku() {
+		
+		boolean isSudoku = true;
+		isSudoku = isLatinSquare();
+		
+		for (int regNum = 0; regNum < iSqrtSize; regNum++) {
+			if (hasDuplicates(getRegion(regNum))) {
+				isSudoku = false;
+			}
+		}
+		return isSudoku;
+	}
 }
