@@ -121,4 +121,24 @@ public class LatinSquareTest {
 		
 		assertFalse(LS.isLatinSquare());
 	}
+	
+	@Test
+	public void isPartialSudoku_Test() {
+		
+		int[][] MySquare = { { 1, 2, 3 }, { 3, 1, 2 }, { 4, 5, 6 } };
+		
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertFalse(LS.isPartialSquare());
+	}
+	
+	@Test
+	public void isPartialSudoku_Test2() {
+		
+		int[][] MySquare = { { 1, 2, 9 }, { 6, 4, 2 }, { 4, 2, 7 } };
+		
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertFalse(LS.isPartialSquare());
+	}
 }
