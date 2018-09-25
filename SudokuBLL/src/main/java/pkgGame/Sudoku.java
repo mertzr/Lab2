@@ -99,7 +99,7 @@ public class Sudoku extends LatinSquare {
 		boolean validCol = !(doesElementExist(getColumn(iCol), iValue));
 		boolean validRow = !(doesElementExist(getRow(iRow), iValue));
 		boolean validReg = !(doesElementExist(getRegion(iCol, iRow), iValue));
-
+		
 		if (validCol && validRow && validReg == true)
 			return true;
 		else
