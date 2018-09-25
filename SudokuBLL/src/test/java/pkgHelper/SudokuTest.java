@@ -3,6 +3,8 @@ package pkgHelper;
 import pkgHelper.LatinSquare;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 
@@ -28,43 +30,19 @@ public class SudokuTest {
 		
 		assertFalse(Arrays.equals(expectedArr,s.getRegion(2)));
 		
-	} 
 	}
 	
 	@Test
 	public void isSudoku_Test1() {
 		
-		int[][] mySudoku = {{1, 2, 3, 4}, {3, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
+		try {
+			int[][] mySudoku = {{1, 2, 3, 4}, {3, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
+			Sudoku testSudoku = new Sudoku(mySudoku);
+			assertTrue(testSudoku.isSudoku());
+		}
 		
-		Sudoku testSudoku = new Sudoku(mySudoku);
-		
-		assertTrue(Sudoku.isSudoku());
+		catch (Exception e) {
+			fail("");
+		}
 	}
-	
-	@Test
-	public void isSudoku_Test2() {
-		
-		int[][] mySudoku = {{1, 2, 3, 4}, {4, 1, 2, 3}, {3, 4, 1, 2}, {2, 3, 4, 1}};
-		
-		Sudoku testSudoku = new Sudoku(4);
-		
-		LatinSquare(mySudoku);
-		
-		assertTrue((Sudoku.isSudoku());
-			
-	}
-	
-	@Test
-	public void isSudoku_Test3() {
-		
-		int[][] mySudoku = {{1, 2, 3, 4}, {4, 1, 2, 3}, {3, 4, 1, 2}, {2, 3, 4, 1}};
-		
-		Sudoku testSudoku = new Sudoku(4);
-		
-		assertFalse(Sudoku.isSudoku());
-		
-	}
-	
-	
-	
 }

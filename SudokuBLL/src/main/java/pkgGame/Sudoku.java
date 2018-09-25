@@ -9,11 +9,16 @@ public class Sudoku extends LatinSquare {
 	private int iSqrtSize;
 
 	public Sudoku(int iSize) throws Exception {
-
+		
 	}
-
+	
+	public Sudoku(int[][] puzzle) {
+		super(puzzle);
+		this.iSize = puzzle.length;
+	}
+	
 	public int[][] getPuzzle() {
-		return LatinSquare;
+		return super.getLatinSquare();
 	}
 
 	public boolean isPartialSudoku() {
