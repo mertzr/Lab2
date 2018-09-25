@@ -55,6 +55,7 @@ public class Sudoku extends LatinSquare {
 		int r=(iCol/iSqrtSize)+((iRow/iSize)*iSqrtSize);
 		return getRegion(r);
 	}
+	
 
 	public int[] getRegion(int r) {
 		int[] reg = new int[super.getLatinSquare().length];
