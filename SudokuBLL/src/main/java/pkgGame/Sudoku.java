@@ -98,8 +98,8 @@ public class Sudoku extends LatinSquare {
 	public boolean isValueValid(int iCol, int iRow, int iValue) {
 		boolean validCol = !(doesElementExist(getColumn(iCol), iValue));
 		boolean validRow = !(doesElementExist(getRow(iRow), iValue));
-		boolean validReg = !(doesElementExist(getRegion(getRegion(iCol, iRow)), iValue));
-
+		boolean validReg = !(doesElementExist(getRegion(iCol, iRow), iValue));
+		
 		if (validCol && validRow && validReg == true)
 			return true;
 		else
