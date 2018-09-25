@@ -1,19 +1,21 @@
 package pkgGame;
 
+import java.util.Arrays;
+
 import pkgHelper.LatinSquare;
 
 public class Sudoku extends LatinSquare {
 	private int iSize;
 	private int iSqrtSize;
-	
-	public Sudoku(int iSize) throws Exception{
-		
-	}  
-	
-	public int[][] getPuzzle(){
+
+	public Sudoku(int iSize) throws Exception {
+
+	}
+
+	public int[][] getPuzzle() {
 		return LatinSquare;
 	}
-	
+
 	public boolean isPartialSudoku() {
 		
 		boolean isInEach = true;
@@ -48,28 +50,60 @@ public class Sudoku extends LatinSquare {
 		return noDuplicates && isInEach && hasZero;
 		
 	}
-	
+
 	public int[] getRegion(int iCol, int iRow) {
 		int r=(iCol/iSqrtSize)+((iRow/iSqrt)*iSqrtSize));
 		return getRegion(r);
 	}
-	
-	public int[] getRegion(int r){ 
-		 int[] reg= new int[super.getLatinSquare().length];
-		 
-		 int i=(r % iSqrtSize)*iSqrtSize;
-		 int j=(r / iSqrtSize)*iSqrtSize;
-		 int iMax=i+iSqrtSize;
-		 int jMax=j+iSqrtSize;
-		 int iCnt=0;
-		 
-		 for (; j<jMax;j++) {
-			 for(i=(r%iSqrtSize)*iSqrtSize;i<iMax;i++){
-				 reg[iCnt++]=super.getLatinSquare()[i][j];
-			 }
-			 
-		 }
-		 return reg;
-	 }
+
+	public int[] getRegion(int r) {
+		int[] reg = new int[super.getLatinSquare().length];
+
+		int i = (r % iSqrtSize) * iSqrtSize;
+		int j = (r / iSqrtSize) * iSqrtSize;
+		int iMax = i + iSqrtSize;
+		int jMax = j + iSqrtSize;
+		int iCnt = 0;
+
+		for (; j < jMax; j++) {
+			for (i = (r % iSqrtSize) * iSqrtSize; i < iMax; i++) {
+				reg[iCnt++] = super.getLatinSquare()[i][j];
+			}
+
+		}
+		return reg;
+	}
+
+	public boolean isSudoku() {
+
+		boolean isSudoku = true;
+
+		isSudoku = super.isLatinSquare();
+
+		int[] firstReg = getRegion(0);
+
+		for (int regNum = 0; regNum < iSqrtSize; regNum++) {
+
+			if (super.hasDuplicates(getRegion(regNum))) {
+				isSudoku = false;
+				break;
+			}
+			if (!(hasAllValues(firstReg, getRegion(regNum)))) {
+				isSudoku = false;
+			}
+		}
+		return isSudoku;
+	}
+
+	public boolean isValueValid(int iCol, int iRow, int iValue) {
+		boolean validCol = !(doesElementExist(getColumn(iCol), iValue));
+		boolean validRow = !(doesElementExist(getRow(iRow), iValue));
+		boolean validReg = !(doesElementExist(getRegion(getRegion(iCol, iRow)), iValue));
+
+		if (validCol && validRow && validReg == true)
+			return true;
+		else
+			return false;
+	}
 
 }
