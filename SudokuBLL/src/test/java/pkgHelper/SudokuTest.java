@@ -47,7 +47,49 @@ public class SudokuTest {
 			fail("");
 		}
 	}
+	
+	@Test
+	public void isSudoku_Test2() {
 
+		try {
+			int[][] mySudoku = {{0, 2, 3, 4}, {3, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
+			Sudoku testSudoku = new Sudoku(mySudoku);
+			assertFalse(testSudoku.isSudoku());
+		}
+
+		catch (Exception e) {
+			fail("Has Zero; should fail");
+		}
+	}
+	
+	@Test
+	public void isSudoku_Test3() {
+
+		try {
+			int[][] mySudoku = {{1, 2, 3, 4}, {1, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
+			Sudoku testSudoku = new Sudoku(mySudoku);
+			assertFalse(testSudoku.isSudoku());
+		}
+
+		catch (Exception e) {
+			fail("Has another 1 in region/column 1");
+		}
+	}
+	
+	@Test
+	public void isSudoku_Test4() {
+
+		try {
+			int[][] mySudoku = {{1, 2, 3, 1}, {3, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
+			Sudoku testSudoku = new Sudoku(mySudoku);
+			assertFalse(testSudoku.isSudoku());
+		}
+
+		catch (Exception e) {
+			fail("Has another 1 in column/row");
+		}
+	}
+	
 	@Test
 	public void isValidValue_Test1() {
 		try {
