@@ -85,12 +85,19 @@ public class Sudoku extends LatinSquare {
 
 		for (int regNum = 0; regNum < iSqrtSize; regNum++) {
 
+			if (super.ContainsZero()) {
+				isSudoku = false;
+				break;
+			}
+			
 			if (super.hasDuplicates(getRegion(regNum))) {
 				isSudoku = false;
 				break;
 			}
+			
 			if (!(hasAllValues(firstReg, getRegion(regNum)))) {
 				isSudoku = false;
+				break;
 			}
 		}
 		return isSudoku;
