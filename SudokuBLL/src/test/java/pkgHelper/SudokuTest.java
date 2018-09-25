@@ -44,5 +44,6 @@ public class SudokuTest {
 		catch (Exception e) {
 			fail("");
 		}
+		
 	}
 }
