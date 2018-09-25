@@ -18,6 +18,7 @@ public class SudokuTest {
 	private int testArr[][] = { { 1, 2, 3, 4 }, { 2, 3, 4, 1 }, { 3, 4, 2, 1 }, { 4, 1, 2, 3 } };
 	private int expectedArr[] = { 2, 3, 4, 1 };
 
+	@Test 
 	public void getRegionTest1() {
 
 		Sudoku s = new Sudoku(testArr);
@@ -25,7 +26,7 @@ public class SudokuTest {
 		assertTrue(Arrays.equals(expectedArr, s.getRegion(1)));
 
 	}
-
+	@Test
 	public void getRegionTest2() {
 
 		Sudoku s = new Sudoku(testArr);
@@ -109,5 +110,25 @@ public class SudokuTest {
 		catch (Exception e) {
 			fail("");
 		}
+	}
+	
+	@Test
+	public void isPartialSudoku_Test() {
+		
+		int[][] MySquare = { { 1, 2, 3 }, { 3, 1, 2 }, { 4, 5, 6 } };
+		
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertFalse(LS.isPartialSquare());
+	}
+	
+	@Test
+	public void isPartialSudoku_Test2() {
+		
+		int[][] MySquare = { { 1, 2, 9 }, { 6, 4, 2 }, { 4, 2, 7 } };
+		
+		LatinSquare LS = new LatinSquare(MySquare);
+		
+		assertFalse(LS.isPartialSquare());
 	}
 }
