@@ -1,5 +1,7 @@
 package pkgGame;
 
+import java.util.Arrays;
+
 import pkgHelper.LatinSquare;
 
 public class Sudoku extends LatinSquare {
@@ -75,12 +77,20 @@ public class Sudoku extends LatinSquare {
 	public boolean isSudoku() {
 		
 		boolean isSudoku = true;
-		isSudoku = isLatinSquare();
 		
-		for (int regNum = 0; regNum < iSqrtSize; regNum++) {
-			if (hasDuplicates(getRegion(regNum))) {
-				isSudoku = false;
-			}
+		isSudoku = super.isLatinSquare();
+		
+		int [] firstReg = getRegion(0);
+				
+			for (int regNum = 0; regNum < iSqrtSize; regNum++) {
+				
+				if (super.hasDuplicates(getRegion(regNum))) {
+					isSudoku = false;
+					break;
+				}
+				if (!(hasAllValues(firstReg, getRegion(regNum)))) {
+					isSudoku = false;
+				}
 		}
 		return isSudoku;
 	}
