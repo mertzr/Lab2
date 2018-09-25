@@ -100,6 +100,7 @@ public class SudokuTest {
 		catch (Exception e) {
 			fail("Has Zero");
 		}
+		
 	}
 	@Test
 	public void isValidValue_Test2() {
