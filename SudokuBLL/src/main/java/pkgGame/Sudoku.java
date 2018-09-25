@@ -28,7 +28,7 @@ public class Sudoku extends LatinSquare {
 		boolean hasZero = false;
 				
 		int [][] regions;
-		for (int i=0; i<9; i++)
+		for (int i=0; i<iSqrtSize; i++)
 			regions[i] = getRegion(i);
 		
 		for (region : regions) {
@@ -43,7 +43,7 @@ public class Sudoku extends LatinSquare {
 			}
 			
 			// Each has no duplicates:
-			for (int i=0; i<9; i++)
+			for (int i=0; i<iSqrtSize; i++)
 				if (!hasDubplicates(regions(i)))
 					noDuplicates = false;
 			
@@ -55,7 +55,7 @@ public class Sudoku extends LatinSquare {
 		return noDuplicates && isInEach && hasZero;
 		
 	}
-
+	
 	public int[] getRegion(int iCol, int iRow) {
 		int r=(iCol/iSqrtSize)+((iRow/iSize)*iSqrtSize);
 		return getRegion(r);
