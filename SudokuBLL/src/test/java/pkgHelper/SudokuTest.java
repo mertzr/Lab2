@@ -1,5 +1,7 @@
 package pkgHelper;
 
+import pkgHelper.LatinSquare;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -34,12 +36,11 @@ public class SudokuTest {
 		
 		int[][] mySudoku = {{1, 2, 3, 4}, {3, 4, 2, 1}, {2, 1, 4, 3}, {4, 3, 1, 2}};
 		
-		Sudoku testSudoku = new Sudoku(4);
+		Sudoku testSudoku = new Sudoku(mySudoku);
 		
 		assertTrue(Sudoku.isSudoku());
-		
-		
 	}
+	
 	@Test
 	public void isSudoku_Test2() {
 		
@@ -47,7 +48,7 @@ public class SudokuTest {
 		
 		Sudoku testSudoku = new Sudoku(4);
 		
-		super.setLatinSquare(mySudoku);
+		LatinSquare(mySudoku);
 		
 		assertTrue((Sudoku.isSudoku());
 			

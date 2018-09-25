@@ -52,7 +52,7 @@ public class Sudoku extends LatinSquare {
 	}
 
 	public int[] getRegion(int iCol, int iRow) {
-		int r=(iCol/iSqrtSize)+((iRow/iSqrt)*iSqrtSize));
+		int r=(iCol/iSqrtSize)+((iRow/iSize)*iSqrtSize);
 		return getRegion(r);
 	}
 
